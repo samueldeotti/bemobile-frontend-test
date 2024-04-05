@@ -1,5 +1,10 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import { useState } from 'react';
+
 /* eslint-disable react/jsx-max-depth */
 function App() {
+  const [filterEmployees, setFilterEmployees] = useState('');
+
   return (
     <div id="content">
       <header
@@ -47,14 +52,18 @@ function App() {
                 // talvez mudar pra outline aqui
                 border: '1px solid #DFDFDF',
                 display: 'flex',
+                alignItems: 'center',
                 justifyContent: 'space-between' } }
             >
 
+              {/* AINDA FALTA FAZER A FUNCIONALIDADE DO ESTADO */}
               <input
                 type="text"
                 placeholder="Pesquisar"
+                value={ filterEmployees }
+                onChange={ (e) => setFilterEmployees(e.target.value) }
                 style={ {
-                  color: '#DFDFDF',
+                  color: '#a3a3a3',
                   padding: '12px 16px',
                   border: '0 none',
                   borderRadius: '8px 0 0 8px',
@@ -64,15 +73,18 @@ function App() {
                 } }
               />
               <button
+                type="submit"
                 style={ { padding: '12px 16px',
                   border: '0 none',
                   borderRadius: '0 8px 8px 0',
                   backgroundColor: 'transparent',
                   outline: 'none',
                   cursor: 'pointer',
+                  margin: 'auto',
+                  display: 'flex',
                 } }
               >
-                lupa
+                <img src="/search.png" alt="search icon" />
               </button>
 
             </div>
