@@ -39,4 +39,4 @@ npx json-server --watch db.json
 npm run dev
 ```
 
-6. Abra o navegador e acesse [http://localhost:3000](http://localhost:3000) para visualizar o projeto.
+6. Abra o navegador e acesse [http://localhost:5173](http://localhost:5173) para visualizar o projeto.
