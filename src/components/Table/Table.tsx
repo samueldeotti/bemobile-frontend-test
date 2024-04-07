@@ -15,7 +15,7 @@ export default function Table({ nameEmployees } : { nameEmployees: string }) {
 
   const [employees, setEmployees] = useState<EmployeeType[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [number, setNumber] = useState(-1);
+  const [rowNumber, setRowNumber] = useState(-1);
 
   useEffect(() => {
     const getData = async () => {
@@ -34,12 +34,13 @@ export default function Table({ nameEmployees } : { nameEmployees: string }) {
   const removeAccentuation = (text: string) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
   const handleClick = (index: number) => {
-    if (number === index) {
-      setNumber(-1);
+    if (rowNumber === index) {
+      setIsOpen(false);
+      setRowNumber(-1);
       return;
     }
     setIsOpen(true);
-    setNumber(index);
+    setRowNumber(index);
   };
 
   return (
@@ -61,9 +62,8 @@ export default function Table({ nameEmployees } : { nameEmployees: string }) {
             <tr
               key={ employee.id }
               onClick={ () => handleClick(index) }
-              data-height={ isOpen && index === number ? '180px' : '60px' }
+              data-height={ isOpen && index === rowNumber ? '180px' : '60px' }
             >
-
               <td>
                 <div className="tdContent">
                   <span><img src={ employee.image } alt="employee" /></span>
@@ -75,7 +75,7 @@ export default function Table({ nameEmployees } : { nameEmployees: string }) {
                   <span className="desktopDevice">{formatPhone(employee.phone)}</span>
                   <span className="mobileDevice">
                     <img
-                      src={ isOpen && index === number
+                      src={ isOpen && index === rowNumber
                         ? '/up-arrow.png' : '/down-arrow.png' }
                       alt="navigate arrow"
                     />

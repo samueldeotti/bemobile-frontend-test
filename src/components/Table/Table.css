@@ -1,24 +1,24 @@
 table {
-  width: 100%; 
-  display: flex; 
+  width: 100%;
+  display: flex;
   flex-direction: column;
 }
 
 thead {
-  background: linear-gradient(180deg, #5A84C0, #594ED2);
+  background: linear-gradient(180deg, #5a84c0, #594ed2);
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
-  height: 47px;
+  height: 60px;
   border-radius: 8px 8px 0 0;
 }
 
 thead tr {
   color: white;
-  text-transform: uppercase;
-  display: grid; 
-  margin: 0 auto;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  text-transform: uppercase;
   width: 90%;
   height: 100%;
   font-size: 16px;
@@ -46,7 +46,6 @@ thead tr th:last-child::after {
   background-color: white;
 }
 
-
 tbody {
   width: 100%;
   margin: 0 auto;
@@ -55,8 +54,8 @@ tbody {
 tbody tr {
   display: flex;
   align-items: center;
-  background-color: white;
   flex-direction: column;
+  background-color: white;
   overflow: hidden;
   margin: auto;
   transition: all 0.5s ease;
@@ -64,11 +63,15 @@ tbody tr {
   gap: 12px;
 }
 
-tbody tr[data-height="180px"] {
+tbody tr:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+tbody tr[data-height='180px'] {
   height: 180px;
 }
 
-tbody tr[data-height="60px"] {
+tbody tr[data-height='60px'] {
   height: 60px;
 }
 
@@ -78,7 +81,7 @@ tbody tr::after {
   width: 100%;
   height: 1px;
   bottom: 0;
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
 }
 
 tbody tr td {
@@ -94,8 +97,8 @@ tbody tr td {
 }
 
 tbody tr td img {
-  height: 34px; 
-  width: 34px; 
+  height: 34px;
+  width: 34px;
   border-radius: 50%;
 }
 
@@ -103,7 +106,6 @@ tbody tr td img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* gap: 10px; */
   font-size: 14px;
 }
 
@@ -163,21 +165,31 @@ tbody tr td img {
 
   thead tr {
     display: grid;
-    grid-template-columns: 0.6fr 0.9fr 0.8fr 1fr 1fr;
+    grid-template-columns: 0.5fr 0.7fr 0.8fr 1fr 1fr;
     text-align: left;
   }
-  
+
   .tdContent {
     display: grid;
-    grid-template-columns: 0.6fr 0.9fr 0.8fr 1fr 1fr;
+    grid-template-columns: 0.5fr 0.7fr 0.8fr 1fr 1fr;
     align-items: center;
   }
 
-  thead tr, tbody tr td {
-    width: 95%;
+  thead tr,
+  tbody tr td {
+    width: 90%;
   }
 
-  tbody tr[data-height="180px"] {
+  tbody tr {
+    box-shadow: 0px 1px 2px 0px #00000033;
+  }
+
+  tbody tr:last-child {
+    border-radius: 0;
+    box-shadow: 0px 1px 2px 0px #00000033;
+  }
+
+  tbody tr[data-height='180px'] {
     height: 60px;
   }
 
