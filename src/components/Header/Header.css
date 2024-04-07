@@ -20,3 +20,10 @@ h1 img {
   width: 44px;
   height: 34px;
 }
+
+@media (min-width: 768px) {
+  h1 {
+    max-width: 1280px;
+  }
+
+}

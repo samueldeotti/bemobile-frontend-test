@@ -45,6 +45,26 @@ input::placeholder {
 button {
   background-color: transparent;
   cursor: pointer;
-  /* margin: auto; */
   display: flex;
+}
+
+@media (min-width: 768px) {
+  .formContainer {
+    margin-top: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  form {
+    width: 40%;
+    height: 50%;
+    max-width: 500px;
+  }
+
+  main {
+    max-width: 1280px;
+  }
+
+  
 }

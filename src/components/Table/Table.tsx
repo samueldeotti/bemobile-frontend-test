@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/jsx-max-depth */
 import { useEffect, useState } from 'react';
 import './Table.css';
@@ -32,13 +33,25 @@ export default function Table({ nameEmployees } : { nameEmployees: string }) {
 
   const removeAccentuation = (text: string) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
+  const handleClick = (index: number) => {
+    if (number === index) {
+      setNumber(-1);
+      return;
+    }
+    setIsOpen(true);
+    setNumber(index);
+  };
+
   return (
     <table>
       <thead>
         <tr>
           <th>Foto</th>
           <th>Nome</th>
-          <th>o0o</th>
+          <th className="desktopDevice">Cargo</th>
+          <th className="desktopDevice">Data de admissão</th>
+          <th className="desktopDevice">Telefone</th>
+          <th className="mobileDevice" />
         </tr>
       </thead>
       <tbody>
@@ -47,25 +60,29 @@ export default function Table({ nameEmployees } : { nameEmployees: string }) {
           .map((employee, index) => (
             <tr
               key={ employee.id }
-              onClick={ () => {
-                if (number === index) {
-                  setNumber(-1);
-                  return;
-                }
-                setIsOpen(true);
-                setNumber(index);
-              } }
+              onClick={ () => handleClick(index) }
               data-height={ isOpen && index === number ? '180px' : '60px' }
             >
 
               <td>
                 <div className="tdContent">
-                  <p><img src={ employee.image } alt="employee" /></p>
-                  <p>{employee.name}</p>
-                  <p><img src="/down-arrow.png" alt="navigate arrow" /></p>
+                  <span><img src={ employee.image } alt="employee" /></span>
+                  <span>{employee.name}</span>
+                  <span className="desktopDevice">{employee.job}</span>
+                  <span className="desktopDevice">
+                    {formatDate(employee.admission_date)}
+                  </span>
+                  <span className="desktopDevice">{formatPhone(employee.phone)}</span>
+                  <span className="mobileDevice">
+                    <img
+                      src={ isOpen && index === number
+                        ? '/up-arrow.png' : '/down-arrow.png' }
+                      alt="navigate arrow"
+                    />
+                  </span>
                 </div>
               </td>
-              <td className="hiddenInfo">
+              <td className="hiddenInfo mobileDevice">
                 <div>
                   <span>Cargo</span>
                   <span>Data de Admissão</span>
