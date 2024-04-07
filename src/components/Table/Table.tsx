@@ -23,7 +23,8 @@ export default function Table({ nameEmployees } : { nameEmployees: string }) {
       setEmployees(data);
     };
     getData();
-  }, []);
+    setIsOpen(false);
+  }, [nameEmployees]);
 
   const formatPhone = (phone: string) => phone.replace(/(\d{2})(\d{2})(\d{5})(\d{4})/, '+$1 ($2) $3-$4');
 
@@ -54,26 +55,28 @@ export default function Table({ nameEmployees } : { nameEmployees: string }) {
                 setIsOpen(true);
                 setNumber(index);
               } }
-              data-height={ isOpen && index === number ? '120px' : '30px' }
+              data-height={ isOpen && index === number ? '180px' : '60px' }
             >
 
               <td>
-                <span><img src={ employee.image } alt="employee" /></span>
-                <span>{employee.name}</span>
-                <span><img src="/down-arrow.png" alt="" /></span>
+                <div className="tdContent">
+                  <p><img src={ employee.image } alt="employee" /></p>
+                  <p>{employee.name}</p>
+                  <p><img src="/down-arrow.png" alt="navigate arrow" /></p>
+                </div>
               </td>
-
-              <th>
-                <span>Cargo</span>
-                <span>Data de Admissão</span>
-                <span>Telefone</span>
-              </th>
               <td className="hiddenInfo">
-                <span>{employee.job}</span>
-                <span>{formatDate(employee.admission_date)}</span>
-                <span>{formatPhone(employee.phone)}</span>
+                <div>
+                  <span>Cargo</span>
+                  <span>Data de Admissão</span>
+                  <span>Telefone</span>
+                </div>
+                <div>
+                  <span>{employee.job}</span>
+                  <span>{formatDate(employee.admission_date)}</span>
+                  <span>{formatPhone(employee.phone)}</span>
+                </div>
               </td>
-
             </tr>
           ))}
       </tbody>

@@ -5,42 +5,47 @@ table {
 }
 
 thead {
-  background: linear-gradient(180deg, #5A84C0 0%, #594ED2 100%);
+  background: linear-gradient(180deg, #5A84C0, #594ED2);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
   height: 47px;
   border-radius: 8px 8px 0 0;
 }
 
 thead tr {
+  color: white;
+  text-transform: uppercase;
   display: flex; 
+  margin: 0 auto;
   justify-content: space-between; 
-  align-items: center
+  align-items: center;
+  width: 90%;
+  height: 100%;
 }
 
 tbody {
-  background-color: white;
   width: 100%;
+  margin: 0 auto;
 }
 
 tbody tr {
   display: flex;
+  align-items: center;
+  background-color: white;
   flex-direction: column;
-  width: 100%;
   overflow: hidden;
+  margin: auto;
   transition: all 0.5s ease;
-  gap: 20px;
-  padding: 20px 0;
   position: relative;
+  gap: 12px;
 }
 
-tbody tr[data-height="120px"] {
-  height: 220px;
-
+tbody tr[data-height="180px"] {
+  height: 180px;
 }
 
-tbody tr[data-height="30px"] {
-  height: 30px;
+tbody tr[data-height="60px"] {
+  height: 60px;
 }
-
 
 tbody tr::after {
   content: '';
@@ -52,9 +57,15 @@ tbody tr::after {
 }
 
 tbody tr td {
+  width: 90%;
+}
+
+.tdContent {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: auto;
+  height: 60px;
 }
 
 tbody tr td img {
@@ -63,22 +74,52 @@ tbody tr td img {
   border-radius: 50%;
 }
 
-tbody tr th {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 12px;
-  align-items: flex-start;
-  background-color: red;
-  align-self: flex-start;
-}
-
 .hiddenInfo {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background-color: blue;
-  font-size: 12px;
-  align-items: flex-end;
-  align-self: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  /* gap: 10px; */
+  font-size: 14px;
 }
+
+.hiddenInfo div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.hiddenInfo div:first-child {
+  font-weight: bold;
+}
+
+.hiddenInfo div:last-child {
+  text-align: right;
+}
+
+.hiddenInfo div span {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.hiddenInfo div:first-child span::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  border-bottom: 1px dotted rgba(223, 223, 223, 1);
+}
+
+.hiddenInfo div:last-child span::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  border-bottom: 1px dotted rgba(223, 223, 223, 1);
+}
+

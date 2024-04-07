@@ -9,10 +9,14 @@ main {
 
 .formContainer {
   align-self: flex-start;
-  width: 100%;  
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
 }
 
-.inputContainer {
+form {
   width: 100%;
   background-color: white;
   border-radius: 8px;
@@ -22,22 +26,25 @@ main {
   justify-content: space-between;
 }
 
-input {
-  color: #a3a3a3;
+
+input, button {
   padding: 12px 16px;
   border: 0 none;
-  border-radius: 8px 0 0 8px;
   outline: none;
+}
+
+input {
+  color: #9E9E9E;
   width: 100%;
 }
 
+input::placeholder {
+  color: #9E9E9E;
+}
+
 button {
-  padding: 12px 16px;
-  border: 0 none;
-  border-radius: 0 8px 8px 0;
   background-color: transparent;
-  outline: none;
   cursor: pointer;
-  margin: auto;
+  /* margin: auto; */
   display: flex;
 }
