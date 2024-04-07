@@ -1,0 +1,84 @@
+table {
+  width: 100%; 
+  display: flex; 
+  flex-direction: column;
+}
+
+thead {
+  background: linear-gradient(180deg, #5A84C0 0%, #594ED2 100%);
+  height: 47px;
+  border-radius: 8px 8px 0 0;
+}
+
+thead tr {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center
+}
+
+tbody {
+  background-color: white;
+  width: 100%;
+}
+
+tbody tr {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  gap: 20px;
+  padding: 20px 0;
+  position: relative;
+}
+
+tbody tr[data-height="120px"] {
+  height: 220px;
+
+}
+
+tbody tr[data-height="30px"] {
+  height: 30px;
+}
+
+
+tbody tr::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  background-color: #E5E5E5;
+}
+
+tbody tr td {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+tbody tr td img {
+  height: 34px; 
+  width: 34px; 
+  border-radius: 50%;
+}
+
+tbody tr th {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 12px;
+  align-items: flex-start;
+  background-color: red;
+  align-self: flex-start;
+}
+
+.hiddenInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: blue;
+  font-size: 12px;
+  align-items: flex-end;
+  align-self: flex-end;
+}
