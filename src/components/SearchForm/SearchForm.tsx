@@ -2,10 +2,12 @@ import './SearchForm.css';
 
 type SearchFormProps = {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  nameEmployees: string;
+  textFilterEmployee: string;
 };
 
-export default function SearchForm({ handleChange, nameEmployees }: SearchFormProps) {
+export default function SearchForm(
+  { handleChange, textFilterEmployee }: SearchFormProps,
+) {
   return (
     <div className="formContainer">
       <h2>Funcionários</h2>
@@ -13,7 +15,7 @@ export default function SearchForm({ handleChange, nameEmployees }: SearchFormPr
         <input
           type="text"
           placeholder="Pesquisar"
-          value={ nameEmployees }
+          value={ textFilterEmployee }
           onChange={ (e) => handleChange(e) }
         />
         <button type="submit">

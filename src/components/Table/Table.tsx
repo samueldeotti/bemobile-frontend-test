@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable react/jsx-max-depth */
 import { useEffect, useState } from 'react';
 import './Table.css';
 
-export default function Table({ nameEmployees } : { nameEmployees: string }) {
+export default function Table({ textFilterEmployee } : { textFilterEmployee: string }) {
   type EmployeeType = {
     id: string;
     name: string;
@@ -24,14 +23,34 @@ export default function Table({ nameEmployees } : { nameEmployees: string }) {
       setEmployees(data);
     };
     getData();
-    setIsOpen(false);
-  }, [nameEmployees]);
+    setRowNumber(-1);
+  }, [textFilterEmployee]);
 
   const formatPhone = (phone: string) => phone.replace(/(\d{2})(\d{2})(\d{5})(\d{4})/, '+$1 ($2) $3-$4');
 
   const formatDate = (date: string) => new Date(date).toLocaleDateString('pt-br');
 
-  const removeAccentuation = (text: string) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  // text without accents, special characters and spaces
+  const formatText = (text: string) => text.normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\w\s]/g, '')
+    .replace(/\s/g, '')
+    .toLowerCase();
+
+  const searchEmployee = () => {
+    const formattedText = formatText(textFilterEmployee);
+
+    if (!formattedText) return employees;
+
+    if (Number(formattedText)) {
+      return employees
+        ?.filter(({ phone }) => formatText(phone).includes(formattedText));
+    }
+
+    return employees
+      ?.filter(({ name, job }) => formatText(name).includes(formattedText)
+      || job.toLowerCase().includes(formattedText));
+  };
 
   const handleClick = (index: number) => {
     if (rowNumber === index) {
@@ -42,6 +61,8 @@ export default function Table({ nameEmployees } : { nameEmployees: string }) {
     setIsOpen(true);
     setRowNumber(index);
   };
+
+  const filteredEmployees = searchEmployee();
 
   return (
     <table>
@@ -56,9 +77,8 @@ export default function Table({ nameEmployees } : { nameEmployees: string }) {
         </tr>
       </thead>
       <tbody>
-        {employees?.filter(({ name }) => removeAccentuation(name.toLowerCase().trim())
-          .includes(removeAccentuation(nameEmployees.toLowerCase().trim())))
-          .map((employee, index) => (
+        {filteredEmployees.length > 0
+          ? filteredEmployees.map((employee, index) => (
             <tr
               key={ employee.id }
               onClick={ () => handleClick(index) }
@@ -95,7 +115,16 @@ export default function Table({ nameEmployees } : { nameEmployees: string }) {
                 </div>
               </td>
             </tr>
-          ))}
+          ))
+          : (
+            <tr>
+              <td>
+                <div className="noEmployee">
+                  <span>Nenhum funcionário encontrado</span>
+                </div>
+              </td>
+            </tr>
+          )}
       </tbody>
     </table>
 

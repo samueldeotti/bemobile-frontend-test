@@ -1,16 +1,14 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import { useState } from 'react';
 import Header from './components/Header/Header';
 import SearchForm from './components/SearchForm/SearchForm';
 import Table from './components/Table/Table';
 
-/* eslint-disable react/jsx-max-depth */
 function App() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNameEmployees(e.target.value);
+    setTextFilterEmployee(e.target.value);
   };
 
-  const [nameEmployees, setNameEmployees] = useState('');
+  const [textFilterEmployee, setTextFilterEmployee] = useState('');
 
   return (
     <>
@@ -18,9 +16,9 @@ function App() {
       <main>
         <SearchForm
           handleChange={ handleChange }
-          nameEmployees={ nameEmployees }
+          textFilterEmployee={ textFilterEmployee }
         />
-        <Table nameEmployees={ nameEmployees } />
+        <Table textFilterEmployee={ textFilterEmployee } />
       </main>
     </>
   );

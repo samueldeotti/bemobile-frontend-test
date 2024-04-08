@@ -6,6 +6,7 @@ Este projeto consiste na construção da visualização de uma tabela com dados 
 
 - Node.js instalado na máquina (versão 18 ou superior).
 - Json-server instalado na máquina.
+- Git instalado na máquina.
 
 ## Instruções de Uso
 

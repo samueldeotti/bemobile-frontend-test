@@ -96,6 +96,15 @@ tbody tr td {
   height: 60px;
 }
 
+.noEmployee {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 58px;
+  font-size: 20px;
+  color: #9E9E9E;
+}
+
 tbody tr td img {
   height: 34px;
   width: 34px;
